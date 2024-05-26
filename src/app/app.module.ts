@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoNgZorroAntdModule } from './DemoNgZorroAntdModule';
 import { CompanyDashboardComponent } from './company/pages/company-dashboard/company-dashboard.component';
 import { SignupClientComponent } from './basic/components/signup-client/signup-client.component';
+import { SignupCompanyComponent } from './basic/components/signup-company/signup-company.component';
 
 registerLocaleData(en);
 
@@ -25,7 +26,8 @@ registerLocaleData(en);
     LoginComponent,
     SignupComponent,
     CompanyDashboardComponent,
-    SignupClientComponent
+    SignupClientComponent,
+    SignupCompanyComponent
   ],
   imports: [
     BrowserModule,
