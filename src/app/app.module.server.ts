@@ -3,7 +3,9 @@ import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import 'localstorage-polyfill'
 
+global['localStorage'] = localStorage;
 @NgModule({
   imports: [
     AppModule,
@@ -11,4 +13,4 @@ import { AppComponent } from './app.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppServerModule {}
+export class AppServerModule { }
