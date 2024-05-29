@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClientService } from '../../services/client.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -10,7 +11,10 @@ export class ClientDashboardComponent {
 
   ads: any = [];
 
-  constructor(private clientService: ClientService,) { }
+  validateForm!: FormGroup;
+
+  constructor(private clientService: ClientService,
+    private fb: FormBuilder) { }
 
   getAllAds() {
     this.clientService.getAllAds().subscribe(res => {
@@ -19,7 +23,16 @@ export class ClientDashboardComponent {
   }
 
   ngOnInit() {
+    this.validateForm = this.fb.group({
+      service: [null, [Validators.required]]
+    })
     this.getAllAds();
+  }
+
+  searchAdByName() {
+    this.clientService.searchAdByName(this.validateForm.get(['service']).value).subscribe(res => {
+      this.ads = res;
+    })
   }
 
   updateImg(img) {

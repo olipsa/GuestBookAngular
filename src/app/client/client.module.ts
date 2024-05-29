@@ -6,12 +6,16 @@ import { ClientComponent } from './client.component';
 import { ClientDashboardComponent } from './pages/client-dashboard/client-dashboard.component';
 import { DemoNgZorroAntdModule } from '../DemoNgZorroAntdModule';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdDetailComponent } from './pages/ad-detail/ad-detail.component';
+import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 
 
 @NgModule({
   declarations: [
     ClientComponent,
-    ClientDashboardComponent
+    ClientDashboardComponent,
+    AdDetailComponent,
+    MyBookingsComponent
   ],
   imports: [
     CommonModule,
