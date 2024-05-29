@@ -7,13 +7,15 @@ import { CompanyDashboardComponent } from './pages/company-dashboard/company-das
 import { CreateAdComponent } from './pages/create-ad/create-ad.component';
 import { DemoNgZorroAntdModule } from '../DemoNgZorroAntdModule';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AllAdsComponent } from './pages/all-ads/all-ads.component';
 
 
 @NgModule({
   declarations: [
     CompanyComponent,
     CompanyDashboardComponent,
-    CreateAdComponent
+    CreateAdComponent,
+    AllAdsComponent
   ],
   imports: [
     CommonModule,
