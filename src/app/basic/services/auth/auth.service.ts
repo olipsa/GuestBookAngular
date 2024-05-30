@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { UserStorageService } from '../storage/user-storage.service';
 
-const BASIC_URL = 'http://localhost:8080/'
+const BASIC_URL = 'http://3.88.184.222:8080/'
 
 export const AUTH_HEADER = 'authorization';
 
