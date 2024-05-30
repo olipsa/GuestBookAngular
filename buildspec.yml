@@ -1,0 +1,38 @@
+version: 0.2 
+
+env:
+   variables:
+       CACHE_CONTROL: '86400'
+       BUCKET_NAME: 'service-booking-angular-bucket'
+       BUILD_FOLDER: 'dist'
+       APP_NAME: 'ServiceBookingSystemAngular'
+       BUILD_ENV: 'production'
+
+phases:
+ install:
+   runtime-versions:
+       nodejs: 18
+   commands:
+       - echo "Preparing to deploy App..."
+ pre_build:
+   commands:
+       - echo "Installing NPM dependencies..."
+       - npm install
+       - npm install -g @angular/cli
+       - echo ng version
+ build:
+   commands:
+       - echo "Starting Build..."
+       - ng build --configuration ${BUILD_ENV} --verbose
+ post_build:
+   commands:
+       - echo "Clearing Bucket..."
+       - aws s3 rm s3://${BUCKET_NAME} --recursive
+       - echo "Copying files to Bucket..."
+       - aws s3 sync ./${BUILD_FOLDER}/${APP_NAME} s3://${BUCKET_NAME} --delete
+       - echo Build complete on 'date' 
+artifacts:
+   files:
+       - '**/*'
+   base-directory: '${BUILD_FOLDER}/${APP_NAME}/'
+   discard-paths: no
